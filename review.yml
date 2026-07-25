@@ -1,0 +1,238 @@
+aid: lockton
+name: Lockton
+review:
+  question: Does Lockton expose a public, self-serve developer portal or documented API surface?
+  answer: false
+  date: '2026-07-25'
+  reviewer: API Evangelist
+  homeMarket: United States
+  tier: broker-intermediary
+  gated: true
+  openapiHarvested: false
+  specsCount: 0
+findings:
+  summary: |
+    Lockton Companies — the world's largest privately held independent
+    insurance brokerage, founded 1966 in Kansas City, Missouri — publishes NO
+    public API surface of any kind. There is no developer portal, no API
+    reference, no downloadable OpenAPI/Swagger definition, no GraphQL
+    endpoint, no published .proto, no public Postman collection or workspace,
+    and no webhook or event catalog. The only integration surfaces Lockton
+    exposes to the outside world are authenticated regional Client Portals and
+    the contact-form-gated Lockton SAGE intelligence platform. Recording this
+    absence accurately is the finding: it is the expected posture for a US
+    broker-intermediary in a market with no federal insurance regulator and no
+    open-insurance mandate.
+  developerPortal:
+    url: ''
+    confirmed: false
+    classification: none
+    note: |
+      No developer portal of any kind was found. Every canonical developer
+      hostname fails to resolve in DNS (NXDOMAIN, no A record): the closest
+      thing to a technology surface on the public website is a marketing page
+      for the Lockton SAGE intelligence platform whose sole call to action is
+      a contact form, plus regional Client Portal login pages.
+  probes:
+  - url: https://developer.lockton.com
+    status: 000
+    note: DNS does not resolve (no A record).
+  - url: https://developers.lockton.com
+    status: 000
+    note: DNS does not resolve (no A record).
+  - url: https://docs.lockton.com
+    status: 000
+    note: DNS does not resolve (no A record).
+  - url: https://api.lockton.com
+    status: 000
+    note: DNS does not resolve (no A record).
+  - url: https://apis.lockton.com
+    status: 000
+    note: DNS does not resolve (no A record).
+  - url: https://portal.lockton.com
+    status: 000
+    note: DNS resolves to 208.18.15.239 but no HTTP/HTTPS response was served anonymously.
+  - url: https://www.lockton.com
+    status: 200
+    note: Redirects to https://global.lockton.com/us/en — the corporate marketing site.
+  - url: https://www.lockton.com/developers
+    status: 522
+    note: Cloudflare origin timeout on the legacy host; no such path exists on the live site.
+  - url: https://www.lockton.com/api
+    status: 522
+    note: Cloudflare origin timeout on the legacy host; no such path exists on the live site.
+  - url: https://global.lockton.com/us/en/developers
+    status: 404
+  - url: https://global.lockton.com/us/en/api
+    status: 404
+  - url: https://global.lockton.com/us/en/partners
+    status: 404
+  - url: https://global.lockton.com/openapi.json
+    status: 404
+  - url: https://global.lockton.com/swagger.json
+    status: 404
+  - url: https://global.lockton.com/api-docs
+    status: 404
+  - url: https://global.lockton.com/graphql
+    status: 404
+  - url: https://global.lockton.com/.well-known/openid-configuration
+    status: 404
+  - url: https://global.lockton.com/.well-known/oauth-authorization-server
+    status: 404
+  - url: https://global.lockton.com/robots.txt
+    status: 200
+    note: >-
+      Disallows /api/* for the Algolia Crawler only. That path is the CMS
+      search/content API for the marketing site, not a product API; requests to
+      https://global.lockton.com/api/ return 404 anonymously.
+  - url: https://global.lockton.com/sitemap.xml
+    status: 200
+    note: >-
+      6,953 URLs enumerated. A case-insensitive scan for "develop", "/api",
+      "integrat", "acord", "ivans", "swagger" and "openapi" returns only
+      editorial content (property developers, business development, adverse
+      development, ESG integration). ZERO developer, API reference, ACORD,
+      IVANS or specification paths exist in the sitemap.
+  - url: https://global.lockton.com/gb/en/client-login
+    status: 200
+    note: >-
+      Client login landing page. Login wall / marketing description of the
+      Client Portal; no developer or API documentation is linked from it.
+  - url: https://global.lockton.com/us/en/lockton-sage-contact-us
+    status: 200
+    note: >-
+      Lockton SAGE Intelligence Platform. Contact-form-only. No API, no data
+      feed, no integration documentation, no self-serve access.
+  - url: https://github.com/Lockton-Companies
+    status: 200
+    note: >-
+      Verified Lockton Companies GitHub organization (3 public repos:
+      azure-enterprise-reports, terraform-provider-azurehelpers, and a fork of
+      pnp-modern-search). All are internal IT/cloud-ops artifacts. No API
+      specifications, SDKs or client libraries are published.
+  - url: https://github.com/LocktonCompanies
+    status: 200
+    note: Second Lockton Companies GitHub organization, 0 public repositories.
+  acordPosture:
+    phrase: ACORD board seat via Lockton Re, no ACORD implementation documented
+    detail: |
+      Lockton's ACORD signal is governance, not implementation. On 20 July 2026
+      Nidhi Howell, Chief Business Technology Officer of Lockton Re, was
+      appointed to the ACORD Solutions Group Board of Directors, explicitly
+      representing the reinsurance broking channel. Lockton Re also operates in
+      the London/reinsurance orbit where Ruschlikon and ACORD ePlacing
+      standards govern broker-to-carrier messaging. However, NO Lockton-owned
+      public page documents an ACORD AL3, ACORD XML, NGDS, IVANS agency
+      download, Applied Epic or Vertafore AMS360 integration. A full scan of
+      the 6,953-URL sitemap returns no ACORD or IVANS reference at all.
+    al3: not documented
+    acordXml: not documented
+    ngds: not documented
+    ivansAgencyDownload: not documented
+    agencyManagementSystemIntegration: not documented
+    source: https://www.insurancebusinessmag.com/reinsurance/news/breaking-news/acord-appoints-four-to-board-with-new-chair-582927.aspx
+  insuranceVerbs:
+    quote: not exposed
+    bind: not exposed
+    issue: not exposed
+    fnol: not exposed
+    note: >-
+      None of the four insurance API verbs are exposed programmatically. As a
+      broker-intermediary Lockton does not underwrite; placement, binding and
+      claims advocacy run through its brokers, carrier markets and
+      authenticated Client Portals, not through a documented API.
+  authModel:
+    scheme: none public
+    note: >-
+      No public authentication scheme is documented because no public API
+      exists. Client access is via authenticated regional Lockton Client
+      Portals; the underlying scheme (SAML/OIDC to an enterprise IdP) is not
+      published and no OIDC discovery document is served on global.lockton.com.
+  webhooks:
+    present: false
+    asyncapi: false
+    note: No event catalog, webhook documentation or AsyncAPI definition exists.
+  postman:
+    present: false
+    note: No public Postman collection or workspace was found for Lockton.
+  graphql:
+    present: false
+    note: https://global.lockton.com/graphql returns 404; no GraphQL surface to introspect.
+  grpc:
+    present: false
+    note: No published .proto files.
+  specs:
+    harvested: 0
+    note: >-
+      Nothing to harvest. No candidate OpenAPI/Swagger URL returned a parsable
+      specification; every probe returned 404 or an HTML document. The
+      openapi/ directory is deliberately omitted from this repo.
+  transports:
+  - protocol: REST
+    scheme: https
+    documented: false
+    note: No public REST API is documented.
+  - protocol: GraphQL
+    scheme: https
+    documented: false
+  - protocol: gRPC
+    documented: false
+  - protocol: WebSocket
+    scheme: wss
+    documented: false
+  - protocol: ACORD/EDI
+    documented: false
+    note: >-
+      Not documented publicly. Sector context is that broker-carrier exchange
+      in the United States runs on ACORD AL3/XML moved by IVANS agency
+      download between carriers and agency management systems; Lockton does not
+      publish its own implementation of this plumbing.
+  marketSeam: |
+    The United States has no federal insurance regulator and no open-insurance
+    mandate. Insurance is regulated state by state under NAIC model laws (the
+    McCarran-Ferguson settlement), so there is no national API surface and
+    nothing compels a broker or carrier to expose anything. Value has accrued
+    to the software and risk-data layer sitting between carriers and
+    distribution — Verisk, LexisNexis Risk, CCC, Guidewire, Duck Creek, Applied
+    Systems, Vertafore/IVANS — while brokers and carriers themselves publish
+    almost nothing public. Lockton is a textbook instance of that pattern.
+sources:
+- url: https://global.lockton.com/us/en
+  type: Website
+  note: Corporate site; www.lockton.com 301s here. No developer or API navigation anywhere.
+- url: https://global.lockton.com/sitemap.xml
+  type: Sitemap
+  note: 6,953 URLs; zero developer/API/ACORD/IVANS/OpenAPI paths.
+- url: https://global.lockton.com/robots.txt
+  type: Robots
+  note: Disallows /api/* for the Algolia Crawler (CMS content API), not a product API.
+- url: https://global.lockton.com/gb/en/client-login
+  type: Login
+  note: Client Portal login wall; no developer resources.
+- url: https://global.lockton.com/us/en/lockton-sage-contact-us
+  type: Documentation
+  note: Lockton SAGE Intelligence Platform — contact form only, no technical documentation.
+- url: https://github.com/Lockton-Companies
+  type: GitHubOrganization
+  note: 3 public repos, all internal cloud/IT ops. No API artifacts.
+- url: https://www.insurancebusinessmag.com/reinsurance/news/breaking-news/acord-appoints-four-to-board-with-new-chair-582927.aspx
+  type: Press
+  note: >-
+    20 July 2026 — Nidhi Howell, Chief Business Technology Officer, Lockton Re,
+    appointed to the ACORD Solutions Group Board of Directors representing the
+    reinsurance broking channel.
+- url: https://global.lockton.com/news-insights/lockton-launches-digital-office-to-be-led-by-claude-yoder
+  type: Press
+  note: >-
+    February 2025 — Lockton established a Digital Office under Claude Yoder as
+    Chief Data, Analytics and Digital Officer; the SAGE analytics platform
+    originated at Lockton Re. Internal capability, not an external API program.
+actions:
+  status: built-stub
+  apisListed: 0
+  openapiDirectoryCreated: false
+  reason: >-
+    Identity captured honestly. Lockton has no public, self-serve API surface;
+    every integration path is partner or client gated. apis[] is intentionally
+    empty and the openapi/ directory is intentionally omitted rather than
+    filled with anything fabricated.
