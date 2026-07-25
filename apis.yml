@@ -50,16 +50,36 @@ modified: '2026-07-25'
 specificationVersion: '0.19'
 apis: []
 common:
+- type: DomainSecurity
+  url: security/lockton-domain-security.yml
 - type: Website
   url: https://global.lockton.com/us/en
 - type: Blog
   url: https://global.lockton.com/us/en/news-insights
 - type: LinkedIn
-  url: https://www.linkedin.com/company/lockton
+  url: https://www.linkedin.com/company/lockton-companies/
 - type: GitHubOrganization
   url: https://github.com/Lockton-Companies
 - type: Login
   url: https://global.lockton.com/gb/en/client-login
+- type: Support
+  url: https://global.lockton.com/us/en/contact-us
+- type: TermsOfService
+  url: https://global.lockton.com/us/en/terms-of-use
+- type: PrivacyPolicy
+  url: https://global.lockton.com/us/en/privacy-notice
+- type: Twitter
+  url: https://twitter.com/Lockton
+- type: YouTube
+  url: https://www.youtube.com/user/LocktonCompanies
+- type: Facebook
+  url: https://www.facebook.com/LocktonCompanies
+- type: Instagram
+  url: https://www.instagram.com/lockton_usa/
+- type: LLMsTxt
+  url: llms/lockton-llms.txt
+- type: Packages
+  url: packages/lockton-packages.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

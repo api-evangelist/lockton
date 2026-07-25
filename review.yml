@@ -113,6 +113,43 @@ findings:
   - url: https://github.com/LocktonCompanies
     status: 200
     note: Second Lockton Companies GitHub organization, 0 public repositories.
+  - url: https://github.com/locktonre
+    status: 200
+    note: >-
+      Third Lockton GitHub organization (Lockton Re), 0 public repositories.
+      Found in the 2026-07-25 enrichment round.
+  - url: https://sage.lockton.com/
+    status: 200
+    note: >-
+      NEW in the 2026-07-25 enrichment round. Lockton Re SAGE runs as a live
+      authenticated Angular single-page application behind Azure Front Door
+      (CNAME locktonresage.z01.azurefd.net). The host serves its index.html
+      shell as a catch-all for EVERY unknown path, so /openapi.json,
+      /swagger.json and /.well-known/openid-configuration all return HTTP 200
+      with content-type text/html — false positives, not specifications. The
+      published JS bundles contain no API base URL, no REST path strings and
+      no OAuth/MSAL configuration; the application surface is gated behind
+      login. This is the deployed form of the SAGE platform whose public page
+      is a contact form, and it is not a documented API.
+  - url: https://dev.loreact.lockton.com/
+    status: 000
+    note: >-
+      Referenced from the SAGE bundle as an "Actuarial UI" external link that
+      is explicitly disabled in production (disabled:this.isProd). A non-prod
+      internal environment, not a public API surface. Recorded for provenance
+      only.
+  - url: https://lockton.com/.well-known/security.txt
+    status: 200
+    note: >-
+      FALSE POSITIVE — the apex domain 301-redirects every path to
+      https://global.lockton.com/ which 302s to /us/en, so any /.well-known/
+      path returns 200 with the marketing homepage as text/html. No security.txt
+      exists. The same false positive applies to /.well-known/openid-configuration
+      and /.well-known/api-catalog on the apex. On global.lockton.com every
+      /.well-known/ path returns an honest 404.
+  - url: https://hackerone.com/lockton
+    status: 404
+    note: No HackerOne program. Bugcrowd /lockton is also 404.
   acordPosture:
     phrase: ACORD board seat via Lockton Re, no ACORD implementation documented
     detail: |
@@ -155,6 +192,50 @@ findings:
   postman:
     present: false
     note: No public Postman collection or workspace was found for Lockton.
+  wellKnown:
+    present: false
+    securityTxt: false
+    openidConfiguration: false
+    oauthAuthorizationServer: false
+    apiCatalog: false
+    aiPlugin: false
+    note: >-
+      No RFC 8615 well-known document is served on any Lockton host. Full sweep
+      recorded in well-known/lockton-well-known.yml, including the apex-redirect
+      and SAGE SPA catch-all false positives so a later round does not re-chase
+      those HTTP 200s.
+  packages:
+    sdks: 0
+    note: >-
+      Sweep of npm, PyPI, RubyGems, NuGet, Packagist and crates.io returns no
+      Lockton client SDK. The only first-party-looking artifact is an abandoned
+      internal .NET utility library on NuGet ("Lockton", v0.2.0, May 2019,
+      no repository URL) which is not an API client and whose ownership is not
+      verified. Recorded in packages/lockton-packages.yml; no SDKs pointer wired.
+  domainSecurity:
+    tls: TLSv1.3
+    hsts: true
+    hstsMaxAge: 31536000
+    dnssec: false
+    caa: []
+    spf: true
+    dmarc: true
+    dmarcPolicy: quarantine
+    note: >-
+      Probed 2026-07-25. Solid transport posture on global.lockton.com; no
+      DNSSEC and no CAA records on lockton.com, and DMARC is at quarantine
+      rather than reject.
+  vulnerabilityDisclosure:
+    present: false
+    note: >-
+      No security.txt, no responsible-disclosure page, and no HackerOne or
+      Bugcrowd program. No Security or VulnerabilityDisclosure pointer wired.
+  trustCenter:
+    present: false
+    note: >-
+      trust.lockton.com and security.lockton.com do not resolve; no trust or
+      compliance page with named certifications was found. No Compliance or
+      TrustCenter pointer wired.
   graphql:
     present: false
     note: https://global.lockton.com/graphql returns 404; no GraphQL surface to introspect.

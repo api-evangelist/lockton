@@ -1,0 +1,77 @@
+generated: '2026-07-25'
+method: searched
+source: >-
+  Registry sweep of npm, PyPI, RubyGems, NuGet, Packagist, crates.io and the
+  Lockton GitHub organizations
+summary: >-
+  Lockton publishes no client SDK for any API, because Lockton publishes no
+  public API. The only first-party-looking package anywhere in the public
+  registries is an abandoned internal .NET Core utility library on NuGet — it
+  is not an API client and has had no release since 2019. No SDKs pointer is
+  wired for this repo: there is no API for an SDK to wrap.
+packages: []
+candidates:
+- language: dotnet
+  registry: nuget
+  name: Lockton
+  url: https://www.nuget.org/packages/Lockton/
+  install: dotnet add package Lockton
+  official: false
+  official_note: >-
+    Author string is "Lockton" and the description is "Shared Lockton .NetCore
+    Library", which is suggestive of Lockton Companies, but there is no
+    repository URL, no project URL and no verified-owner signal on the listing,
+    so first-party ownership is NOT confirmed.
+  api_client: false
+  api_client_note: >-
+    A shared internal utility library, not a client for any Lockton API.
+  latest_version: 0.2.0
+  published: '2019-05-16'
+  versions: 2
+  total_downloads: 2755
+  status: abandoned
+excluded:
+- name: Pacote.Data.AppLockton
+  registry: nuget
+  reason: >-
+    Boilerplate listing (author "Data", description "Package Description",
+    Portuguese "Pacote" naming). No evidence of Lockton Companies ownership.
+- name: Pacote.Business.AppLockton.1.0.0
+  registry: nuget
+  reason: >-
+    Boilerplate listing (author "Business", description "Package Description").
+    No evidence of Lockton Companies ownership.
+registries_searched:
+- registry: npm
+  query: lockton
+  results: 0
+- registry: pypi
+  query: lockton
+  results: 0
+  note: https://pypi.org/pypi/lockton/json returns 404
+- registry: rubygems
+  query: lockton
+  results: 0
+- registry: nuget
+  query: lockton
+  results: 3
+  note: 1 unverified candidate, 2 excluded as unrelated
+- registry: packagist
+  query: lockton
+  results: 0
+- registry: crates.io
+  query: lockton
+  results: 0
+github_organizations:
+- org: https://github.com/Lockton-Companies
+  public_repos: 3
+  note: >-
+    azure-enterprise-reports (Azure cost/usage reporting),
+    terraform-provider-azurehelpers (Go), and a fork of pnp-modern-search.
+    All internal cloud/IT operations tooling — no API specs, no SDKs, no
+    client libraries.
+- org: https://github.com/LocktonCompanies
+  public_repos: 0
+- org: https://github.com/locktonre
+  public_repos: 0
+  note: Organization exists but publishes nothing.

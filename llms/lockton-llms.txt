@@ -1,0 +1,62 @@
+# Lockton
+
+> Lockton Companies is the world's largest privately held, independent insurance brokerage, founded by Jack Lockton in 1966 and headquartered in Kansas City, Missouri. Lockton is a broker and intermediary rather than a risk carrier, placing commercial property and casualty, specialty and financial lines, employee benefits, private client coverage, and — through Lockton Re — treaty and facultative reinsurance across more than 140 offices worldwide.
+
+## API posture
+
+Lockton has NO public API. As of July 2026 there is no developer portal, no API
+reference, no OpenAPI/Swagger definition, no GraphQL endpoint, no gRPC/protobuf,
+no public Postman collection, no webhook or event catalog, and no MCP server.
+The hostnames developer.lockton.com, developers.lockton.com, docs.lockton.com,
+api.lockton.com and apis.lockton.com do not resolve in DNS. A crawl of all 6,953
+URLs in global.lockton.com/sitemap.xml returns zero developer, API, ACORD, IVANS,
+OpenAPI or Swagger paths.
+
+Client-facing technology is delivered through authenticated regional Lockton
+Client Portals and the Lockton Re SAGE intelligence and analytics platform. SAGE
+runs as an authenticated Angular application at sage.lockton.com behind Azure
+Front Door; it is presented on the public website behind a contact form with no
+self-serve access, no documented data feed and no published integration surface.
+
+This is the expected posture for a US broker-intermediary. The United States has
+no federal insurance regulator and no open-insurance mandate, so broker/carrier
+data exchange runs on ACORD standards in an EDI-and-forms idiom rather than a
+public API idiom. Lockton's most substantive standards signal is governance
+rather than implementation: in July 2026 Nidhi Howell, Chief Business Technology
+Officer of Lockton Re, was appointed to the ACORD Solutions Group Board of
+Directors representing the reinsurance broking channel. No ACORD AL3, ACORD XML,
+NGDS or IVANS agency-download implementation is documented on any public Lockton
+property.
+
+## Company
+
+- [Website](https://global.lockton.com/us/en): Corporate site; www.lockton.com and lockton.com redirect here.
+- [News and Insights](https://global.lockton.com/us/en/news-insights): Lockton's editorial and research blog.
+- [Contact](https://global.lockton.com/us/en/contact-us): General and office contact routing.
+- [Client Login](https://global.lockton.com/gb/en/client-login): Authenticated regional Client Portal entry point.
+- [Lockton SAGE](https://global.lockton.com/us/en/lockton-sage-contact-us): Lockton Re's intelligence and analytics platform — contact form only, no technical documentation.
+- [SAGE patents](https://global.lockton.com/re/en/sage-patents): Patents underpinning the SAGE platform.
+- [GitHub](https://github.com/Lockton-Companies): 3 public repositories, all internal cloud/IT operations tooling. No API artifacts.
+
+## Legal
+
+- [Privacy Notice](https://global.lockton.com/us/en/privacy-notice)
+- [Terms of Use](https://global.lockton.com/us/en/terms-of-use)
+- [Terms of Business](https://global.lockton.com/us/en/terms-of-business)
+- [Cookies Notice](https://global.lockton.com/us/en/cookies-notice)
+- [Compensation Disclosure](https://global.lockton.com/us/en/compensation-disclosure)
+
+## API Evangelist artifacts
+
+- [apis.yml](https://raw.githubusercontent.com/api-evangelist/lockton/refs/heads/main/apis.yml): APIs.json index for Lockton.
+- [Domain security](https://raw.githubusercontent.com/api-evangelist/lockton/refs/heads/main/security/lockton-domain-security.yml): Probed TLS/HSTS/DNSSEC/CAA/SPF/DMARC posture.
+- [Well-known sweep](https://raw.githubusercontent.com/api-evangelist/lockton/refs/heads/main/well-known/lockton-well-known.yml): Result of probing every /.well-known/ path across all reachable Lockton hosts.
+- [Packages](https://raw.githubusercontent.com/api-evangelist/lockton/refs/heads/main/packages/lockton-packages.yml): Registry sweep across npm, PyPI, RubyGems, NuGet, Packagist and crates.io.
+- [Review](https://raw.githubusercontent.com/api-evangelist/lockton/refs/heads/main/review.yml): Full API Evangelist review, including every probe and its HTTP status.
+
+## Notes for agents
+
+There is nothing here to call programmatically. Do not attempt to construct
+Lockton API requests — no base URL, no authentication scheme and no operation
+is published. Engagement with Lockton runs through a broker relationship and
+the authenticated Client Portal, not through a self-serve developer surface.

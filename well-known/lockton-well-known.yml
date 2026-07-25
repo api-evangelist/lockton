@@ -1,0 +1,78 @@
+generated: '2026-07-25'
+method: searched
+source: live probes of every Lockton host reachable in DNS
+summary: >-
+  No RFC 8615 well-known document is served on any Lockton host. Every
+  /.well-known/ path probed on global.lockton.com returns a hard 404. The
+  apex lockton.com and the sage.lockton.com application host both return
+  HTTP 200 for ANY /.well-known/ path, but those are false positives: the
+  apex 301-redirects every path to the marketing homepage, and the SAGE
+  Angular app serves its index.html shell as a catch-all. Neither serves a
+  real document. Recorded so a later round does not re-chase these 200s.
+hosts:
+- host: https://global.lockton.com
+  note: Corporate marketing site (Netlify/Next.js). Honest 404s.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://lockton.com
+  note: >-
+    Apex domain. Cloudflare 301 to https://global.lockton.com/ which 302s to
+    /us/en. Every /.well-known/ path resolves 200 with content-type text/html
+    serving the marketing homepage — a redirect artifact, NOT a document.
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    valid: false
+    reason: redirect-to-marketing-homepage
+  - path: /.well-known/openid-configuration
+    status: 200
+    valid: false
+    reason: redirect-to-marketing-homepage
+  - path: /.well-known/api-catalog
+    status: 200
+    valid: false
+    reason: redirect-to-marketing-homepage
+- host: https://sage.lockton.com
+  note: >-
+    Lockton Re SAGE — an authenticated Angular SPA behind Azure Front Door
+    (locktonresage.z01.azurefd.net). Serves its index.html shell for every
+    unknown path, so all 200s below are the SPA catch-all, not documents.
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    valid: false
+    reason: spa-catch-all-index-html
+  - path: /openapi.json
+    status: 200
+    valid: false
+    reason: spa-catch-all-index-html
+  - path: /swagger.json
+    status: 200
+    valid: false
+    reason: spa-catch-all-index-html
+unresolved_hosts:
+- developer.lockton.com
+- developers.lockton.com
+- docs.lockton.com
+- api.lockton.com
+- apis.lockton.com
+- my.lockton.com
+- clientportal.lockton.com
+- trust.lockton.com
+- security.lockton.com
+- status.lockton.com
+findings:
+  security_txt: false
+  openid_configuration: false
+  oauth_authorization_server: false
+  api_catalog: false
+  ai_plugin: false
