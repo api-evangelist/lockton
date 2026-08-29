@@ -1,5 +1,8 @@
 aid: lockton
 url: https://raw.githubusercontent.com/api-evangelist/lockton/refs/heads/main/apis.yml
+x-api-posture: no-product-api
+x-api-posture-basis: observed
+x-api-posture-note: "Its API posture is honestly characterized as partner-gated with no public API surface."
 name: Lockton
 kind: company
 description: >-
