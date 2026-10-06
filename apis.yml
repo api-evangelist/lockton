@@ -85,10 +85,12 @@ tags_raw:
 - Partner Gated
 - No Public API
 created: '2026-07-25'
-modified: '2026-07-25'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis: []
 common:
+- url: https://global.lockton.com/feed
+  type: BlogRSS
 - type: DomainSecurity
   url: security/lockton-domain-security.yml
 - type: Website
