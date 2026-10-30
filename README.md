@@ -1,4 +1,4 @@
-# Lockton (lockton)
+# Lockton
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,79 +64,84 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Lockton Companies is the world's largest privately held, independent insurance brokerage, founded by Jack Lockton in 1966 and headquartered in Kansas City, Missouri, United States. Lockton is a broker and intermediary rather than a risk carrier: it places commercial property and casualty, specialty and financial lines, employee benefits and people solutions, private client coverage, and — through Lockton Re — treaty and facultative reinsurance, across a global network of associates and offices reaching more than 140 locations.
+Lockton Companies is the world's largest privately held, independent insurance brokerage, founded by Jack Lockton in 1966 and headquartered in Kansas City, Missouri, United States. Lockton is a broker and intermediary rather than a risk carrier: it places commercial property and casualty, specialty and financial lines, employee benefits and people solutions, private client coverage, and — through Lockton Re — treaty and facultative reinsurance, for tens of thousands of clients across a global network of associates and offices reaching more than 140 locations. Its API posture is honestly characterized as partner-gated with no public API surface. As of July 2026 Lockton publishes no developer portal, no API reference, no OpenAPI or Swagger definition, no GraphQL endpoint, no Postman workspace, and no webhook or event catalog. The hostnames developer.lockton.com, developers.lockton.com, docs.lockton.com and api.lockton.com do not resolve in DNS, and a crawl of the 6,953 URLs in global.lockton.com/sitemap.xml surfaces no developer, API, ACORD, IVANS, OpenAPI or Swagger path. Client-facing technology is delivered through authenticated regional Lockton Client Portals and the proprietary Lockton SAGE intelligence and analytics ecosystem, which is presented on the website behind a contact form with no self-serve access, no documented data feed and no published integration surface. This is the expected posture for a US broker-intermediary: the United States has no federal insurance regulator and no open-insurance mandate, so data exchange between carriers, brokers and agency management systems runs on ACORD standards in an EDI and forms idiom rather than a public API idiom. Lockton's most substantive standards signal is governance rather than implementation — in July 2026 Nidhi Howell, Chief Business Technology Officer of Lockton Re, was appointed to the ACORD Solutions Group Board of Directors representing the reinsurance broking channel — but no ACORD AL3, ACORD XML, NGDS or IVANS agency-download implementation is documented on any public Lockton property.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/lockton/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/lockton/refs/heads/main/apis.yml)
+**Areas:** Insurance · United States · Brokerage · Insurance Brokerage · Property and Casualty · Employee Benefits · Reinsurance · Specialty Insurance · Risk Management · ACORD
 
-## Tags
+## Lockton on APIs.io
 
-- Insurance
-- United States
-- Broker
-- Insurance Brokerage
-- Property and Casualty
-- Employee Benefits
-- Reinsurance
-- Specialty Insurance
-- Risk Management
-- ACORD
-- Partner Gated
-- No Public API
+Everything profiled for Lockton is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/lockton/](https://apis.io/providers/lockton/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-07-25
-- **Modified:** 2026-07-25
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Security (1)
 
-**None.** Lockton publishes no public, self-serve API.
+Authentication, trust centre, and vulnerability disclosure.
 
-As of 25 July 2026 there is no developer portal, no API reference, no downloadable OpenAPI or Swagger definition, no GraphQL endpoint, no published `.proto`, no public Postman collection or workspace, and no webhook or event catalog anywhere on a Lockton-owned property.
+- [Lockton Domain Security](https://apis.io/security/lockton/lockton-domain-security/)
 
-- `developer.lockton.com`, `developers.lockton.com`, `docs.lockton.com`, `api.lockton.com` and `apis.lockton.com` do not resolve in DNS.
-- `www.lockton.com` (200) redirects to [https://global.lockton.com/us/en](https://global.lockton.com/us/en); `/developers`, `/api` and `/partners` under `global.lockton.com/us/en` all return 404.
-- `/openapi.json`, `/swagger.json`, `/api-docs`, `/graphql`, `/.well-known/openid-configuration` and `/.well-known/oauth-authorization-server` on `global.lockton.com` all return 404.
-- The 6,953 URLs in [global.lockton.com/sitemap.xml](https://global.lockton.com/sitemap.xml) contain **zero** developer, API reference, ACORD, IVANS, OpenAPI or Swagger paths.
+## Where to find this API
 
-The only outward-facing integration surfaces are gated:
-
-- **Lockton Client Portal** — authenticated regional client portals, e.g. [global.lockton.com/gb/en/client-login](https://global.lockton.com/gb/en/client-login) (200, login wall).
-- **Lockton SAGE Intelligence Platform** — proprietary AI-enabled analytics ecosystem originating at Lockton Re, presented publicly at [global.lockton.com/us/en/lockton-sage-contact-us](https://global.lockton.com/us/en/lockton-sage-contact-us) (200) behind a contact form, with no technical documentation, data feed or self-serve access.
-
-Recording that absence accurately is the point. This is the expected posture for a US broker-intermediary.
-
-## ACORD Posture
-
-**ACORD board seat via Lockton Re; no ACORD implementation documented.**
-
-Lockton's ACORD signal is governance, not implementation. On 20 July 2026 Nidhi Howell, Chief Business Technology Officer of Lockton Re, was appointed to the ACORD Solutions Group Board of Directors, explicitly representing the reinsurance broking channel. Lockton Re also operates in the London and reinsurance orbit where Ruschlikon and ACORD ePlacing standards govern broker-to-carrier messaging.
-
-No Lockton-owned public page documents an ACORD AL3, ACORD XML, NGDS, IVANS agency download, Applied Epic or Vertafore AMS360 integration.
-
-## Insurance API Verbs
-
-| Verb | Exposed |
-| --- | --- |
-| Quote | No |
-| Bind | No |
-| Issue | No |
-| FNOL | No |
-
-As a broker-intermediary Lockton does not underwrite. Placement, binding and claims advocacy run through its brokers, carrier markets and authenticated client portals — not through a documented API.
-
-## Market Seam — United States
-
-The United States has no federal insurance regulator and no open-insurance mandate. Insurance is regulated state by state under NAIC model laws (the McCarran-Ferguson settlement), so there is no national API surface and nothing compels a broker or carrier to expose anything. Data exchange has run since the 1970s on ACORD standards in an EDI and forms idiom, moved by agency-download plumbing (IVANS) between carriers and agency management systems. Value accrued to the software and risk-data layer sitting between carriers and distribution — Verisk, LexisNexis Risk, CCC, Guidewire, Duck Creek, Applied Systems, Vertafore — while brokers and carriers publish almost nothing public. Lockton is a textbook instance of that pattern.
-
-## Links
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://global.lockton.com/us/en)
-- [News & Insights](https://global.lockton.com/us/en/news-insights)
-- [LinkedIn](https://www.linkedin.com/company/lockton)
-- [GitHub Organization](https://github.com/Lockton-Companies) — 3 public repos, all internal cloud/IT ops; no API artifacts
-- [Client Login](https://global.lockton.com/gb/en/client-login)
+- [Support](https://global.lockton.com/us/en/contact-us)
+- [Blog](https://global.lockton.com/us/en/news-insights)
+- [Terms of service](https://global.lockton.com/us/en/terms-of-use)
+- [Privacy policy](https://global.lockton.com/us/en/privacy-notice)
+- [GitHub](https://github.com/Lockton-Companies)
 
-## Review
+## API Evangelist rating
 
-See [review.yml](review.yml) for the full reviewer findings, every probed URL with its HTTP status, and the ACORD posture with sources.
+**Kin Score 12.2** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 55.4 |
+| Contract quality | 0.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 7.1 |
+| Access clarity | 27.6 |
+
+**Agent readiness 2.9** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | yes |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 12.3** — Insurance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/lockton/](https://apis.io/providers/lockton/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Lockton: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/lockton/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
